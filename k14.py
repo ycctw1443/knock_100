@@ -3,8 +3,9 @@
 import codecs
 
 def main():
+    num = int(input())
     with codecs.open('hightemp.txt','r','utf-8') as fin:
-        print(sum(1 for line in fin))
+        print(''.join([line for line in fin][:num]))
 
 if __name__ == '__main__':
     main()

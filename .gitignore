@@ -1,6 +1,7 @@
 *.txt
 *.json
 *.gz
+*.mecab
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

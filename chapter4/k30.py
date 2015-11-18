@@ -2,7 +2,10 @@
 #-- coding:utf-8 -*-
 import codecs
 import re
-import cPickle as pickle
+try:
+    import cPickle as pickle
+except:
+    import pickle
 #今回、作られたリストはpickleファイルとして保存します。
 
 def get_mecab(path):

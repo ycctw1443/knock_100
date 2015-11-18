@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #-- coding:utf-8 -*-
+from collections import Counter
 try:
     import cPickle as pickle
 except:
@@ -7,8 +8,13 @@ except:
 
 def main():
     list = pickle.load(open('neko.txt.mecab.pkl','rb'))
+    word_list = []
     for words in list:
-        print(' '.join([dic['base'] for dic in words if dic['pos'] == u'動詞']))
+        str_list = [dic['surface'] for dic in words]
+        word_list.extend(str_list)
+    count = Counter(word_list)
+    for k,v in count.most_common():
+        print(k,v)
 
 if __name__ == '__main__':
     main()

@@ -1,10 +1,13 @@
 #!/usr/bin/env python
-#-- coding:utf-8 -*-
+# -- coding:utf-8 -*-
 import re
 import k20
 
+
 def main():
-    print('\n'.join([line.split('|')[0] for line in re.findall('\[\[Category:(.*?)\]\]',k20.get_json('jawiki-country.json'))]))
+    path = 'jawiki-country.json'
+    for line in re.findall('\[\[Category:(.*?)\]\]', k20.get_json(path)):
+        print(line.split('|')[0])
 
 if __name__ == '__main__':
     main()

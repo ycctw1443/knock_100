@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -- coding:utf-8 -*-
 
-str = 'Hi He Lied Because Boron Could Not Oxidize Fluorine.i'
+str = 'Hi He Lied Because Boron Could Not Oxidize Fluorine.'
 str += 'New Nations Might Also Sign Peace Security Clause. Arthur King Can.'
 dict = {}
 for i, v in enumerate(str.split(' ')):

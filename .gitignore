@@ -5,6 +5,7 @@
 *.pkl
 *.msl
 *.out
+*.cabocha
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

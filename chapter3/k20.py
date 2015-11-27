@@ -7,8 +7,9 @@ from io import StringIO
 
 def get_json(path):
     with codecs.open(path, 'r', 'utf-8') as fin:
-        list = [json.load(StringIO(line)) for line in fin]
-    return '\n'.join([d['text'] for d in list if d['title'] == 'イギリス'])
+        i_list = [json.load(StringIO(line)) for line in fin]
+    return '\n'.join([doc['text'] for doc in i_list
+                      if doc['title'] == 'イギリス'])
 
 
 def main():

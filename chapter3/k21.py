@@ -5,9 +5,9 @@ import k20
 
 
 def main():
-    for line in k20.get_json('jawiki-country.json').split('\n'):
-        if re.search('Category', line):
-            print(line)
+    path = 'jawiki-country.json'
+    print('\n'.join([line for line in k20.get_json(path).split('\n')
+                     if re.search('Category', line)]))
 
 if __name__ == '__main__':
     main()

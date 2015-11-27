@@ -6,7 +6,7 @@ import re
 
 def main():
     with codecs.open('hightemp.txt', 'r', 'utf-8') as fin:
-        print(''.join([re.sub(r'\t', ' ', x) for x in fin]))
+        print(''.join([re.sub(r'\t', ' ', line) for line in fin]))
 
 if __name__ == '__main__':
     main()

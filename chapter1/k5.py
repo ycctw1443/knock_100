@@ -2,13 +2,13 @@
 # -- coding:utf-8 -*-
 
 
-def bigram(input):
-    return([input[i:i+2] for i in range(len(input)-1)])
+def bigram(sentence):
+    return([sentence[i:i+2] for i in range(len(sentence)-1)])
 
 
 def main():
-    str = "I am an NLPer"
-    print(bigram(str), bigram(str.split(" ")))
+    sentence = 'I am an NLPer'
+    print(bigram(sentence), bigram(sentence.split(' ')))
 
 if __name__ == '__main__':
     main()

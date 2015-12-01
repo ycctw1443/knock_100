@@ -11,22 +11,27 @@ class Morph:
         self.pos1 = pos1
 
 
-def main():
-    path = 'neko.txt.cabocha'
-    count = 0
+def get_morph(path):
     output = []
     with codecs.open(path, 'r') as fin:
-        for line in fin:
-            if line.strip() == 'EOS':
-                count += 1
-                if count == 3:
-                    break
-            elif count == 2:
-                if line.split(' ')[0] != '*':
-                    surface, w_info = line.split('\t')
-                    ilist = w_info.split(',')
-                    output.append(Morph(surface, ilist[6], ilist[0], ilist[1]))
-    for w in output:
+        c_list = ''.join([line for line in fin])
+    mo_list = [sentence.strip() for sentence in c_list.split('EOS\n')]
+    for sentence in mo_list:
+        if not sentence:
+            output.append([''])
+            continue
+        output.append([Morph(word.split()[0],
+                             word.split()[1].split(',')[6],
+                             word.split()[1].split(',')[0],
+                             word.split()[1].split(',')[1])
+                       for word in sentence.split('\n')
+                       if word[0] != '*' and word[0] != '　'])
+    return output
+
+
+def main():
+    output = get_morph('neko.txt.cabocha')
+    for w in output[2]:
         print(w.surface, w.base, w.pos, w.pos1)
 
 if __name__ == '__main__':

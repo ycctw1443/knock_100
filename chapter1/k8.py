@@ -3,8 +3,8 @@
 
 
 def cipher(input_words):
-    return ''.join([str(219 - ord(char)) if char.islower() else char
-                    for char in input_words])
+    return ''.join(str(219 - ord(char)) if char.islower() else char
+                   for char in input_words)
 
 
 def main():

@@ -1,14 +1,7 @@
 #!/usr/bin/env python
 # -- coding:utf-8 -*-
 import codecs
-
-
-class Morph:
-    def __init__(self, surface, base, pos, pos1):
-        self.surface = surface
-        self.base = base
-        self.pos = pos
-        self.pos1 = pos1
+import Morph
 
 
 def get_morph(path):
@@ -20,19 +13,19 @@ def get_morph(path):
         if not sentence:
             output.append([''])
             continue
-        output.append([Morph(word.split()[0],
-                             word.split()[1].split(',')[6],
-                             word.split()[1].split(',')[0],
-                             word.split()[1].split(',')[1])
+        output.append([Morph.Morph(word.split()[0],
+                                   word.split()[1].split(',')[6],
+                                   word.split()[1].split(',')[0],
+                                   word.split()[1].split(',')[1])
                        for word in sentence.split('\n')
                        if word[0] != '*' and word[0] != '　'])
     return output
 
 
 def main():
-    output = get_morph('neko.txt.cabocha')
-    for w in output[2]:
-        print(w.surface, w.base, w.pos, w.pos1)
+    morph = get_morph('neko.txt.cabocha')
+    for w in morph[2]:
+        print(w._surface, w._base, w._pos, w._pos1)
 
 if __name__ == '__main__':
     main()

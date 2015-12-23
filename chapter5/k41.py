@@ -1,23 +1,9 @@
 #!/usr/bin/env python
 # -- coding:utf-8 -*-
-# k41でクラスを完結させたかったため、こちらにもMorphクラスを作成
-# もしかしたら問題文通りにリストを作成できていないかもしれない
 import codecs
-
-
-class Morph:
-    def __init__(self, surface, base, pos, pos1):
-        self.surface = surface
-        self.base = base
-        self.pos = pos
-        self.pos1 = pos1
-
-
-class Chunk:
-    def __init__(self, morphs, dst, srcs):
-        self.morphs = morphs
-        self.dst = dst
-        self.srcs = srcs
+import Morph
+import Chunk
+import k40
 
 
 def get_chunk(sentence):
@@ -33,11 +19,11 @@ def get_chunk(sentence):
             dst = word.split()[2].rstrip('D')
             srcs = word.split()[1]
         else:
-            output.append(Chunk(
-                Morph(word.split()[0],
-                      word.split()[1].split(',')[6],
-                      word.split()[1].split(',')[0],
-                      word.split()[1].split(',')[1]),
+            output.append(Chunk.Chunk(
+                Morph.Morph(word.split()[0],
+                            word.split()[1].split(',')[6],
+                            word.split()[1].split(',')[0],
+                            word.split()[1].split(',')[1]),
                 dst, srcs))
     return output
 
@@ -62,12 +48,12 @@ def main():
     s_num = str(0)
     d_num = str(0)
     for c in result[7]:
-        if c.srcs != s_num:
+        if c._srcs != s_num:
             print(output, d_num)
-            s_num = c.srcs
+            s_num = c._srcs
             output = ''
-        output += c.morphs.surface
-        d_num = c.dst
+        output += c._morphs._surface
+        d_num = c._dst
         if c == result[7][-1]:
             print(output, d_num)
 

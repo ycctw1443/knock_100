@@ -3,7 +3,6 @@
 import codecs
 import Morph
 import Chunk
-import k40
 
 
 def get_chunk(sentence):
@@ -19,12 +18,7 @@ def get_chunk(sentence):
             dst = word.split()[2].rstrip('D')
             srcs = word.split()[1]
         else:
-            output.append(Chunk.Chunk(
-                Morph.Morph(word.split()[0],
-                            word.split()[1].split(',')[6],
-                            word.split()[1].split(',')[0],
-                            word.split()[1].split(',')[1]),
-                dst, srcs))
+            output.append(Chunk.Chunk(Morph.Morph(word), dst, srcs))
     return output
 
 
@@ -48,12 +42,12 @@ def main():
     s_num = str(0)
     d_num = str(0)
     for c in result[7]:
-        if c._srcs != s_num:
+        if c.srcs != s_num:
             print(output, d_num)
-            s_num = c._srcs
+            s_num = c.srcs
             output = ''
-        output += c._morphs._surface
-        d_num = c._dst
+        output += c.morphs.surface
+        d_num = c.dst
         if c == result[7][-1]:
             print(output, d_num)
 

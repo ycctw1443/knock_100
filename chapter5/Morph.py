@@ -16,16 +16,14 @@ class Morph():
     形態素を表すクラス
     """
 
-    def __init__(self, surface, base, pos, pos1):
+    def __init__(self, word):
         """コンストラクタ
 
         keyword argumets:
-        surface - 表層系
-        base - 基本形
-        pos - 品詞
-        pos1 - 品詞細分類1
+        sentence -- 単語
         """
-        self.surface = surface
-        self.base = base
-        self.pos = pos
-        self.pos1 = pos1
+        self.__word = word
+        self.surface = self.__word.split()[0]
+        self.base = self.__word.split()[1].split(',')[6]
+        self.pos = self.__word.split()[1].split(',')[0]
+        self.pos1 = self.__word.split()[1].split(',')[1]
